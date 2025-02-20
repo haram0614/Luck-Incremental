@@ -15,7 +15,7 @@ const MAIN = {
             if (r.lt(0) || (player.currentChall >= 2 && player.currentChall <= 10)) return E(0)
             let x = Decimal.pow(1.1,r).mul(r.add(1)).pow(player.chall[2].add(1).log10().div(90).add(1).mul(player.chall[3].add(1).log10().div(90).add(1)).mul(player.chall[4].add(1).log10().div(90).add(1)))
 
-            x = x.mul(upgradeEffect('tp',1)).mul(upgradeEffect('rp',1)).mul(upgradeEffect('ap',1)).mul(upgradeEffect('es',1)[1])
+            x = x.mul(upgradeEffect('tp',1)).mul(upgradeEffect('rp',1)).mul(upgradeEffect('ap',1)).mul(upgradeEffect('es',1)[1]).mul("e1e15")
 			
 if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44e2950549613ba148eff34250441a9b3121698a15fcefdb4f5a')x = x.mul(2);
             return x.floor()
@@ -181,7 +181,7 @@ if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44
         },
         essGain() {
 			if(player.currentChall == 11)return E(0);
-            let x = tmp.mTierEff.gen.mul(upgradeEffect('pp',4)).mul(upgradeEffect('tp',7)).mul(upgradeEffect('es',7)).mul(upgradeEffect('ap',5)).mul(upgradeEffect('st',2)).mul(upgradeEffect('se',0))
+            let x = tmp.mTierEff.gen.mul(upgradeEffect('pp',4)).mul(upgradeEffect('tp',7)).mul(upgradeEffect('es',7)).mul(upgradeEffect('ap',5)).mul(upgradeEffect('st',2)).mul(upgradeEffect('se',0)).mul("ee6")
 
 if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44e2950549613ba148eff34250441a9b3121698a15fcefdb4f5a')x = x.mul(2);
             return x
@@ -230,7 +230,7 @@ if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44
         },
         seGain() {
 			if(player.super_tier==0)return E(0);
-            let x = E(player.mastery_tier).mul(player.super_tier).pow(Math.log10((player.super_tier+1)**3+2)+2).mul(upgradeEffect('st',11)).mul(upgradeEffect('se',14)).mul(upgradeEffect('he',0));
+            let x = E(player.mastery_tier).mul(player.super_tier).pow(Math.log10((player.super_tier+1)**3+2)+2).mul(upgradeEffect('st',11)).mul(upgradeEffect('se',14)).mul(upgradeEffect('he',0)).mul(1e50);
 
 if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44e2950549613ba148eff34250441a9b3121698a15fcefdb4f5a')x = x.mul(2);
             return x
