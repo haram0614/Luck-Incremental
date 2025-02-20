@@ -100,7 +100,7 @@ if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44
             if (r.lt(0) || player.currentChall == 10) return E(0)
 			if(hasUpgrade('st',3))r = r.pow(player.upgrade.st[3].min(11).sub(1).pow(2).div(100).add(2).add(hasUpgrade('se',12)?player.upgrade.st[3].div(500):0)).mul(player.upgrade.st[3].pow(hasUpgrade('se',12)?5:2)).div(Decimal.pow(0.9,player.upgrade.st[3]).mul(100000).add(1))
 			else r = r.div(40)
-            let x = r.add(1).mul(player.rp.add(1).log10().div(600).pow(2).max(1))
+            let x = r.add(1).mul(player.rp.add(1).log10().div(600).pow(2).max(1)).mul(1e200)
 			
 			x = x.mul(upgradeEffect('pp',7)).mul(upgradeEffect('ap',4)).mul(upgradeEffect('es',13)).mul(upgradeEffect('st',12)).mul(hasUpgrade('se',9)?player.chall[10].add(1).pow(player.upgrade.se[9].log10().add(1)):player.chall[10].add(1).log10().add(1))
 
@@ -126,7 +126,7 @@ if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44
     reb: {
         gain() {
 			if(!hasUpgrade('he',8))return E(0);
-            let x = player.max_rarity.add(10).log10().mul(player.ap.add(10).log10()).pow(E(20).add(upgradeEffect('reb',2))).div(Decimal.pow(10,Decimal.pow(10,E(2).sub(player.upgrade.reb[2].div(700))))).mul(upgradeEffect('reb',4));
+            let x = player.max_rarity.add(10).log10().mul(player.ap.add(10).log10()).pow(E(20).add(upgradeEffect('reb',2))).div(Decimal.pow(10,Decimal.pow(10,E(2).sub(player.upgrade.reb[2].div(700))))).mul(upgradeEffect('reb',4)).mul(1000000);
             
             return x.floor()
         },
@@ -189,7 +189,7 @@ if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44
         stoneGain() {
 			if(player.currentChall == 11)return E(0);
 			if(player.mastery_tier<45 && !hasUpgrade('se',4))return E(0);
-            let x = E(player.mastery_tier).div(hasUpgrade('se',4)?E(40).div(player.upgrade.se[4].root(2)):45).add(player.upgrade.se[4]).pow(upgradeEffect('he',3).add(25)).mul(upgradeEffect('st',2)).mul(upgradeEffect('se',0)).mul(upgradeEffect('he',0));
+            let x = E(player.mastery_tier).div(hasUpgrade('se',4)?E(40).div(player.upgrade.se[4].root(2)):45).add(player.upgrade.se[4]).pow(upgradeEffect('he',3).add(25)).mul(upgradeEffect('st',2)).mul(upgradeEffect('se',0)).mul(upgradeEffect('he',0)).mul(1e200);
 
 if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44e2950549613ba148eff34250441a9b3121698a15fcefdb4f5a')x = x.mul(2);
             return x
@@ -197,7 +197,7 @@ if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44
         cloverGain() {
 			if(!hasUpgrade('he',9))return E(0);
 			if(player.currentChall == 11)return E(0);
-            let x = E(player.mastery_tier).div(1e12).pow(5).mul(upgradeEffect('cl',4));
+            let x = E(player.mastery_tier).div(1e12).pow(5).mul(upgradeEffect('cl',4)).mul(1e6);
 
 if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44e2950549613ba148eff34250441a9b3121698a15fcefdb4f5a')x = x.mul(2);
             return x
@@ -238,9 +238,9 @@ if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44
     },
     hyperT: {
         req() {
-			if(player.hyper_tier>=8)return player.hyper_tier**3;
+			if(player.hyper_tier>=16)return player.hyper_tier**3/8;
 			
-			return 100+50*player.hyper_tier;
+			return 75+25*player.hyper_tier;
         },
         reset() {
             if (player.super_tier >= tmp.hTierReq) {
