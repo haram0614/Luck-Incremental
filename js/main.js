@@ -126,7 +126,7 @@ if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44
     reb: {
         gain() {
 			if(!hasUpgrade('he',8))return E(0);
-            let x = player.max_rarity.add(10).log10().mul(player.ap.add(10).log10()).pow(E(20).add(upgradeEffect('reb',2))).div(Decimal.pow(10,Decimal.pow(10,E(2).sub(player.upgrade.reb[2].div(700))))).mul(upgradeEffect('reb',4)).mul(1000000);
+            let x = player.max_rarity.add(10).log10().mul(player.ap.add(10).log10()).pow(E(20).add(upgradeEffect('reb',2))).div(Decimal.pow(10,Decimal.pow(10,E(2).sub(player.upgrade.reb[2].div(700))))).mul(upgradeEffect('reb',4)).mul(1e43);
             
             return x.floor()
         },
@@ -197,7 +197,7 @@ if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44
         cloverGain() {
 			if(!hasUpgrade('he',9))return E(0);
 			if(player.currentChall == 11)return E(0);
-            let x = E(player.mastery_tier).div(1e12).pow(5).mul(upgradeEffect('cl',4)).mul(1e6);
+            let x = E(player.mastery_tier).div(1e12).pow(5).mul(upgradeEffect('cl',4)).mul(1e43);
 
 if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44e2950549613ba148eff34250441a9b3121698a15fcefdb4f5a')x = x.mul(2);
             return x
@@ -230,7 +230,7 @@ if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44
         },
         seGain() {
 			if(player.super_tier==0)return E(0);
-            let x = E(player.mastery_tier).mul(player.super_tier).pow(Math.log10((player.super_tier+1)**3+2)+2).mul(upgradeEffect('st',11)).mul(upgradeEffect('se',14)).mul(upgradeEffect('he',0)).mul(1e50);
+            let x = E(player.mastery_tier).mul(player.super_tier).pow(Math.log10((player.super_tier+1)**3+2)+2).mul(upgradeEffect('st',11)).mul(upgradeEffect('se',14)).mul(upgradeEffect('he',0)).mul(1e50).mul(player.super_tier.pow_base(10));
 
 if(sha512_256(localStorage.supporterCode+"loader3229").slice(2) == '97b4061c3a44e2950549613ba148eff34250441a9b3121698a15fcefdb4f5a')x = x.mul(2);
             return x
